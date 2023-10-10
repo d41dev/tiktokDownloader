@@ -17,7 +17,7 @@ const bot = new TelegramBot(token);
 const app = express();
 
 // Define your webhook endpoint
-const webhookEndpoint = '/your-webhook-endpoint'; // Change this to your desired endpoint path
+const webhookEndpoint = '/tiktok'; // Change this to your desired endpoint path
 
 // Middleware to parse incoming JSON requests from Telegram
 app.use(bodyParser.json());
@@ -79,10 +79,10 @@ async function downloadVideo(videoUrl) {
 }
 
 // Start your Express server
-const port = process.env.PORT || 3000;
+const port = 3000;
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
   
   // Register the webhook URL with Telegram
-  bot.setWebHook(`https://your-server-url.com${webhookEndpoint}`);
+  bot.setWebHook(`https://tiktok-8p6y.onrender.com${webhookEndpoint}`);
 });
