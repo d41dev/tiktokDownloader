@@ -24,7 +24,7 @@ app.use(bodyParser.json());
 
 // Webhook route to handle incoming updates
 app.post(webhookEndpoint, async (req, res) => {
-  const { message } = req.body;
+  const { message, callback_query } = req.body;
 
   if (!message || !message.text) {
     return res.status(200).end();
@@ -43,7 +43,7 @@ app.post(webhookEndpoint, async (req, res) => {
 
     // Send video caption
     bot.sendMessage(chatId, `Caption: ${caption}`);
-  } else if (text !== "/start") {
+  } else if (text !== "/start" && !callback_query) {
     bot.sendMessage(chatId, "Invalid URL: The URL must be for a TikTok video");
   }
 
