@@ -79,10 +79,10 @@ async function downloadVideo(videoUrl) {
 }
 
 // Start your Express server
-const port = 3000;
+const port = process.env.PORT || 8080;
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
   
   // Register the webhook URL with Telegram
-  bot.setWebHook(`https://tiktok-8p6y.onrender.com${webhookEndpoint}`);
+  bot.setWebHook(`${process.env.WEBHOOK_URL}${webhookEndpoint}`);
 });
